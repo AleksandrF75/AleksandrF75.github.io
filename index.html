@@ -1,39 +1,5 @@
 <!DOCTYPE html>
 
-<head>
-    <meta charset="utf-8" />
-</head>
-
-<button onclick="generirovat()">Генерировать квадратное уравнение</button>
-
-<div>
-    <p>
-        <b>
-            <i id="cofic_a"></i>x<sup>2 </sup><i id="znak_a_b"></i><i id="cofic_b"></i>x <i id="znak_b_c"></i><i
-                id="cofic_c"></i> =<i id="otvet"></i>
-        </b>
-    </p>
-    <p>Найти x1, x2</p>
-    <div></div>
-    x1 =
-    <input id="num_x1" />
-    <div></div>
-    x2 =
-    <input id="num_x2" />
-    <div></div>
-    <p></p>
-    <button onclick="proverit()">Проверить</button>
-    <div></div>
-    <p>
-        <b>Ответ <a id="rezultat"></a></b>
-    </p>
-    <!--
-        c_delit_a =
-    <a id="c_delit_a"></a>
-    -->
-</div>
-
-
 <script>
     var cofic_a;
     var cofic_b;
@@ -89,3 +55,37 @@
         return i;
     }
 </script>
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<button onclick="generirovat()">Генерировать квадратное уравнение</button>
+
+<div>
+    <p>
+        <b>
+            <i id="cofic_a"></i>x<sup>2 </sup><i id="znak_a_b"></i><i id="cofic_b"></i>x <i id="znak_b_c"></i><i
+                id="cofic_c"></i> =<i id="otvet"></i>
+        </b>
+    </p>
+    <p>Найти x1, x2</p>
+    <div></div>
+    x1 =
+    <input id="num_x1" />
+    <div></div>
+    x2 =
+    <input id="num_x2" />
+    <div></div>
+    <p></p>
+    <button onclick="proverit()">Проверить</button>
+    <div></div>
+    <p>
+        <b>Ответ <a id="rezultat"></a></b>
+    </p>
+    <!--
+        c_delit_a =
+    <a id="c_delit_a"></a>
+    -->
+</div>
+
+
