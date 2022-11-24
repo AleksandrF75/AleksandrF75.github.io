@@ -16,7 +16,7 @@
         </p>
         Найти x1, x2
         <div></div>
-        x1 = 1 или -1
+        x1 привести к 1 или -1
         <p></p>
         x1 =
         <input id="num_x1" />
@@ -37,6 +37,13 @@
         <div>
             x2= <a id="x2"></a>
         </div>
+        <p></p>
+        <div>
+            x1_= <a id="x1_"></a>
+        </div>
+        <div>
+            x2_= <a id="x2_"></a>
+        </div>
 
     </div>
 
@@ -48,6 +55,8 @@
         var num_x2;
         var x1;
         var x2;
+        var x1_;
+        var x2_;
         var znak_a_b;
         var znak_b_c;
         var otvet;
@@ -72,9 +81,9 @@
                     }
 
                 } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
-                x2 = (x2 / Math.abs(x1));
-                x1 = (x1 / Math.abs(x1));
-            } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
+                x2_ = (x2 / Math.abs(x1));
+                x1_ = (x1 / Math.abs(x1));
+            } while (x1_.toString().match(/\.(\d+)/)?.[1].length > 1 || x2_.toString().match(/\.(\d+)/)?.[1].length > 1);
 
             if (cofic_b > 0) document.getElementById("znak_a_b").innerHTML = "+";
             else document.getElementById("znak_a_b").innerHTML = "";
@@ -90,12 +99,16 @@
 
             num_x1 = Number(document.getElementById("num_x1").value);
             num_x2 = Number(document.getElementById("num_x2").value);
-            if (num_x1 == x1 && num_x2 == x2) document.getElementById("rezultat").innerHTML = "правильный";
+            
+            if (num_x1 == x1_ && num_x2 == x2_) document.getElementById("rezultat").innerHTML = "правильный";
             else {
                 document.getElementById("rezultat").innerHTML = "неправильный";
                 document.getElementById("x1").innerHTML = x1;
                 document.getElementById("x2").innerHTML = x2;
+                document.getElementById("x1_").innerHTML = x1_;
+                document.getElementById("x2_").innerHTML = x2_;
             }
         }
+        
     </script>
 </body>
