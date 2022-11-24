@@ -28,10 +28,10 @@
         <p>
             <b>Ответ <a id="rezultat"></a></b>
         </p>
-        <!--
+        
         c_delit_a =
     <a id="c_delit_a"></a>
-    -->
+    
     </div>
 
     <script>
@@ -67,11 +67,11 @@
             num_x2 = Number(document.getElementById("num_x2").value);
             if (cofic_b > 0) {
                 if (num_x1 == 1 && num_x2 == cofic_c / cofic_a) document.getElementById("rezultat").innerHTML = "правильный";
-                else document.getElementById("rezultat").innerHTML = "не правильный";
+                else document.getElementById("rezultat").innerHTML = "неправильный";
             }
             else {
                 if (num_x1 == -1 && num_x2 == -1 * (cofic_c / cofic_a)) document.getElementById("rezultat").innerHTML = "правильный";
-                else document.getElementById("rezultat").innerHTML = "не правильный";
+                else document.getElementById("rezultat").innerHTML = "неправильный";
             }
             document.getElementById("c_delit_a").innerHTML = cofic_c / cofic_a;
         }
