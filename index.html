@@ -1,1 +1,97 @@
+<!DOCTYPE html>
 
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <button onclick="generirovat()">Генерировать квадратное уравнение</button>
+
+    <div>
+        <p>
+            <b>
+                <i id="cofic_a"></i>x<sup>2 </sup><i id="znak_a_b"></i><i id="cofic_b"></i>x <i id="znak_b_c"></i><i
+                    id="cofic_c"></i> = 0
+            </b>
+        </p>        
+        <p>Найти x1, x2</p>
+        <div></div>
+        <p>x1 = 1 или -1</p>
+        x1 =
+        <input id="num_x1" />
+        <div></div>
+        x2 =
+        <input id="num_x2" />
+        <div></div>
+        <p></p>
+        <button onclick="proverit()">Проверить</button>
+        <div></div>
+        <p>
+            <b>Ответ <a id="rezultat"></a></b>
+        </p>
+        Верный ответ
+        <div>
+            x1= <a id="x1"></a>
+        </div>
+        <div>
+            x2= <a id="x2"></a>
+        </div>
+
+    </div>
+
+    <script>
+        var cofic_a;
+        var cofic_b;
+        var cofic_c;
+        var num_x1;
+        var num_x2;
+        var x1;
+        var x2;
+        var znak_a_b;
+        var znak_b_c;
+        var otvet;
+        var dis;
+        function generirovat() {
+            do {
+                do {
+                    do {
+                        cofic_a = Math.floor(Math.random() * -39 + 20);
+                        cofic_b = Math.floor(Math.random() * -39 + 20);
+                        cofic_c = Math.floor(Math.random() * -39 + 20);
+                    } while (cofic_a == 0 || cofic_b == 0 || cofic_c == 0 || cofic_a == cofic_b);
+                    dis = (cofic_b * cofic_b) - (4 * cofic_a * cofic_c);
+                } while (dis < 0);
+                if (dis == 0) {
+                    x1 = -cofic_b / (2 * cofic_a);
+                }
+                if (dis > 0) {
+                    x1 = ((-1 * cofic_b) - Math.sqrt(dis)) / (2 * cofic_a);
+                    x2 = ((-1 * cofic_b) + Math.sqrt(dis)) / (2 * cofic_a);
+                }
+                x2 = (x2 / Math.abs(x1));
+                x1 = (x1 / Math.abs(x1));
+            } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
+
+            if (cofic_b > 0) document.getElementById("znak_a_b").innerHTML = "+";
+            else document.getElementById("znak_a_b").innerHTML = "";
+            if (cofic_c > 0) document.getElementById("znak_b_c").innerHTML = "+";
+            else document.getElementById("znak_b_c").innerHTML = "";
+            document.getElementById("cofic_a").innerHTML = cofic_a;
+            document.getElementById("cofic_b").innerHTML = cofic_b;
+            document.getElementById("cofic_c").innerHTML = cofic_c;
+            document.getElementById("dis").innerHTML = dis;
+
+        }
+        function proverit() {
+
+            num_x1 = Number(document.getElementById("num_x1").value);
+            num_x2 = Number(document.getElementById("num_x2").value);
+            if (num_x1 == x1 && num_x2 == x2) document.getElementById("rezultat").innerHTML = "правильный";
+            else {
+                document.getElementById("rezultat").innerHTML = "неправильный";
+                document.getElementById("x1").innerHTML = x1;
+                document.getElementById("x2").innerHTML = x2;
+            }
+        }
+    </script>
+</body>
