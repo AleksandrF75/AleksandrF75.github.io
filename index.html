@@ -13,7 +13,7 @@
                 <i id="cofic_a"></i>x<sup>2 </sup><i id="znak_a_b"></i><i id="cofic_b"></i>x <i id="znak_b_c"></i><i
                     id="cofic_c"></i> = 0
             </b>
-        </p>        
+        </p>
         Найти x1, x2
         <div></div>
         x1 = 1 или -1
@@ -56,19 +56,22 @@
             do {
                 do {
                     do {
-                        cofic_a = Math.floor(Math.random() * -39 + 20);
-                        cofic_b = Math.floor(Math.random() * -39 + 20);
-                        cofic_c = Math.floor(Math.random() * -39 + 20);
-                    } while (cofic_a == 0 || cofic_b == 0 || cofic_c == 0 || cofic_a == cofic_b);
-                    dis = (cofic_b * cofic_b) - (4 * cofic_a * cofic_c);
-                } while (dis < 0);
-                if (dis == 0) {
-                    x1 = -cofic_b / (2 * cofic_a);
-                }
-                if (dis > 0) {
-                    x1 = ((-1 * cofic_b) - Math.sqrt(dis)) / (2 * cofic_a);
-                    x2 = ((-1 * cofic_b) + Math.sqrt(dis)) / (2 * cofic_a);
-                }
+                        do {
+                            cofic_a = Math.floor(Math.random() * -39 + 20);
+                            cofic_b = Math.floor(Math.random() * -39 + 20);
+                            cofic_c = Math.floor(Math.random() * -39 + 20);
+                        } while (cofic_a == 0 || cofic_b == 0 || cofic_c == 0 || cofic_a == cofic_b);
+                        dis = (cofic_b * cofic_b) - (4 * cofic_a * cofic_c);
+                    } while (dis < 0);
+                    if (dis == 0) {
+                        x1 = -cofic_b / (2 * cofic_a);
+                    }
+                    if (dis > 0) {
+                        x1 = ((-1 * cofic_b) - Math.sqrt(dis)) / (2 * cofic_a);
+                        x2 = ((-1 * cofic_b) + Math.sqrt(dis)) / (2 * cofic_a);
+                    }
+
+                } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
                 x2 = (x2 / Math.abs(x1));
                 x1 = (x1 / Math.abs(x1));
             } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
