@@ -15,8 +15,6 @@
             </b>
         </p>
         Найти x1, x2
-        <div></div>
-        x1 привести к 1 или -1
         <p></p>
         x1 =
         <input id="num_x1" />
@@ -37,13 +35,6 @@
         <div>
             x2= <a id="x2"></a>
         </div>
-        <p></p>
-        <div>
-            x1_= <a id="x1_"></a>
-        </div>
-        <div>
-            x2_= <a id="x2_"></a>
-        </div>
 
     </div>
 
@@ -55,35 +46,33 @@
         var num_x2;
         var x1;
         var x2;
-        var x1_;
-        var x2_;
         var znak_a_b;
         var znak_b_c;
         var otvet;
         var dis;
+        var znak;
         function generirovat() {
-            do {
                 do {
                     do {
                         do {
                             cofic_a = Math.floor(Math.random() * -39 + 20);
                             cofic_b = Math.floor(Math.random() * -39 + 20);
-                            cofic_c = Math.floor(Math.random() * -39 + 20);
-                        } while (cofic_a == 0 || cofic_b == 0 || cofic_c == 0 || cofic_a == cofic_b);
+                            znak = Math.floor(Math.random() * 2);
+                            //cofic_c = Math.floor(Math.random() * -39 + 20);
+                            if(znak==1)cofic_c = (cofic_a - cofic_b) * (-1);
+                            else cofic_c = (cofic_a + cofic_b) * (-1);
+                        } while (cofic_a == 0 || cofic_b == 0 || cofic_c == 0);
                         dis = (cofic_b * cofic_b) - (4 * cofic_a * cofic_c);
                     } while (dis < 0);
                     if (dis == 0) {
                         x1 = -cofic_b / (2 * cofic_a);
                     }
                     if (dis > 0) {
-                        x1 = ((-1 * cofic_b) - Math.sqrt(dis)) / (2 * cofic_a);
-                        x2 = ((-1 * cofic_b) + Math.sqrt(dis)) / (2 * cofic_a);
+                        x1 = ((-1 * cofic_b) + Math.sqrt(dis)) / (2 * cofic_a);
+                        x2 = ((-1 * cofic_b) - Math.sqrt(dis)) / (2 * cofic_a);
                     }
 
                 } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
-                x2_ = (x2 / Math.abs(x1));
-                x1_ = (x1 / Math.abs(x1));
-            } while (x1_.toString().match(/\.(\d+)/)?.[1].length > 1 || x2_.toString().match(/\.(\d+)/)?.[1].length > 1);
 
             if (cofic_b > 0) document.getElementById("znak_a_b").innerHTML = "+";
             else document.getElementById("znak_a_b").innerHTML = "";
@@ -99,16 +88,22 @@
 
             num_x1 = Number(document.getElementById("num_x1").value);
             num_x2 = Number(document.getElementById("num_x2").value);
-            
-            if (num_x1 == x1_ && num_x2 == x2_) document.getElementById("rezultat").innerHTML = "правильный";
+            if (dis == 0) {
+                if (num_x1 == x1 && document.getElementById("num_x2").value == "") {
+                    document.getElementById("rezultat").innerHTML = "правильный";
+                }
+                else document.getElementById("rezultat").innerHTML = "неправильный";
+                document.getElementById("x1").innerHTML = x1;
+                document.getElementById("x2").innerHTML = "";
+            }
             else {
-                document.getElementById("rezultat").innerHTML = "неправильный";
+                if (num_x1 == x1 && num_x2 == x2 || num_x1 == x2 && num_x2 == x1) {
+                    document.getElementById("rezultat").innerHTML = "правильный";
+                }
+                else document.getElementById("rezultat").innerHTML = "неправильный";
                 document.getElementById("x1").innerHTML = x1;
                 document.getElementById("x2").innerHTML = x2;
-                document.getElementById("x1_").innerHTML = x1_;
-                document.getElementById("x2_").innerHTML = x2_;
             }
         }
-        
     </script>
 </body>
